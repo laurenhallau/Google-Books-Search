@@ -3,7 +3,7 @@ const path=require("path")
 const apiRoutes = require("./api/apiRoutes");
 
 // api routes
-router.use("/books", apiRoutes);
+router.use("/book", apiRoutes);
 
 
 router.get("*", function(req, res) {

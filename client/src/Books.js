@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import SearchArea from './SearchArea';
 import request from 'superagent';
 import BookList from './BookList';
-import BookCard from './BookCard';
 import API from './utils/Api';
 
 class Books extends Component {
