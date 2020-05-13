@@ -3,6 +3,7 @@ import SearchArea from './SearchArea';
 import request from 'superagent';
 import BookList from './BookList';
 import BookCard from './BookCard';
+import API from './utils/Api';
 
 class Books extends Component {
     constructor(props) {
@@ -20,7 +21,7 @@ class Books extends Component {
             .query({ q: this.state.searchField })
             .then((data) => {
                 this.setState({ books: [...data.body.items]}) //spread operator
-                console.log(data);
+                console.log('BOOKS', data);
             })
  }
 
@@ -28,12 +29,20 @@ class Books extends Component {
         this.setState({ searchField: e.target.value})
     }
 
+    handleSavedBook = id => {
+      console.log('onclick is a go', id)
+      API.saveBook({id})
+    }
 
   render () {
     return (
       <div>
         <SearchArea searchBook={this.searchBook} handleSearch={this.handleSearch}/>
-        <BookList books={this.state.books}/>
+        <BookList 
+        books={this.state.books}
+        saveBook={ this.handleSavedBook}
+        
+        />
       </div>
     );
   }

@@ -1,18 +1,23 @@
 import React from "react";
 import BookCard from "./BookCard";
 
-const BookList = (props) => {
+const BookList = ({ books, saveBook}) => {
   return (
     <div className="list">
-      {props.books.map((book, i) => {
+      {books.map((book) => {
         return (
+          <div>
           <BookCard
-            key={i}
+            key={book.id}
+            id={book.id}
             image={book.volumeInfo.imageLinks.thumbnail}
             title={book.volumeInfo.title}
             author={book.volumeInfo.authors}
             description={book.volumeInfo.description}
+            saveBook={saveBook}
           />
+        
+          </div>
         );
       })}
     </div>
